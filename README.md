@@ -9,10 +9,12 @@ Based and extended from BW_Lang_Switcher_Plugin by blickwert
 - Dropdown of languages.
 - Per‐block visibility via `show-for-xx` CSS classes.
 
+
 ## Installation
 
 1. Copy to `wp-content/plugins/minimal-polylang-extensions`.
 2. Activate plugin.
+
 
 ## Shortcode
 
@@ -30,9 +32,16 @@ This is intended to be used in headers, footers, or any template part that needs
 
 Only matching content renders based on `<html lang="">`.
 
+
 ## License
 
 GPLv2 or later.
+
+
+## Requirements
+
+- **Polylang** plugin must be active.
+- Works with FSE themes and block-based templates.
 
 
 ## What's ahead?
