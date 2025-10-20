@@ -1,0 +1,92 @@
+/* Language Switcher Styles */
+
+#tcp-language-switcher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 10px;
+
+}
+
+#tcp-language-switcher .current-language {
+    cursor: pointer;
+}
+
+
+#tcp-language-switcher .language-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#tcp-language-switcher .language-list a {
+    text-decoration: none;
+    color: inherit;
+    margin: 0 5px;
+}
+
+#tcp-language-switcher .language-list.hidden {
+    display: none;
+}
+
+/* Popup */
+#tcp-language-switcher {
+    position: relative;
+}
+#tcp-language-switcher p:empty, #tcp-language-switcher .language-list .lang-link br, #tcp-language-switcher .current-language br {
+    display: none;
+}
+#tcp-language-switcher .language-list {
+    position: absolute;
+    margin-top: 2em;
+    border-radius: 10px;
+    padding: 10px;
+    background: #fff;
+    color: var(--wp--preset--color--main);
+    font-weight: var(--wp--custom--font-weight--semi-bold);
+    text-transform: uppercase;
+}
+
+#tcp-language-switcher .language-list:after, #tcp-language-switcher .language-list:before {
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+/* popup-layout */
+
+.language-list:not([class*=text]) .lang-name {
+    text-indent: -999px;
+    overflow:hidden;
+    display: block;
+}
+.language-list span {
+    white-space: nowrap;
+    display: block;
+}
+
+.current-language .lang-icon {
+    width: 20px; 
+    height: auto;
+    vertical-align: middle;
+    margin-right: 8px;
+    display: inline-block;
+        filter: invert(1);
+}
+
+#tcp-language-switcher.theme-light .current-language .lang-icon {
+        filter: none;
+}
+
+/* Hide all language-specific wrappers by default */
+[class*="show-for-"] {
+  display: none;
+}
+
+/* Show/hide per-language is injected via inline CSS */
