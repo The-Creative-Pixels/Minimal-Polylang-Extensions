@@ -21,7 +21,7 @@ Polylang language switcher shortcode, manual language switcher, and per-block la
 1. Add `[tcp-lang-switcher]` to shortcode block.
 2. Add `[tcp-lang-switcher theme="light"]` to use black over light backgrounds. The default theme is for dark backgrounds.
 
-### Language Switcher Menu
+## Language Switcher Menu
 
 1. In the WordPress Block Editor (Site Editor or Navigation block), create a **Navigation** block with a submenu.
 2. The parent menu item should display a placeholder: **"LAN"**.
