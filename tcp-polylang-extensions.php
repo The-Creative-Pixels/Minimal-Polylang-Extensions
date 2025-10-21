@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Minimal Polylang Extensions
- * Description: Polylang switcher shortcode + per-block language visibility via CSS.
- * Version: 1.0
+ * Description: Polylang language switcher shortcode, manual language switcher, and per-block language visibility via CSS.
+ * Version: 1.1
  * Author: Cynthia Lara @ The Creative Pixels
  * Author URI: https://thecreativepixels.com/
  * Text Domain: tcp-polylang-extensions
@@ -54,7 +54,47 @@ class TCP_Polylang_Extensions {
     public function enqueue_frontend() {
         wp_enqueue_style(  'tcp-polylang-extensions-style' );
         wp_enqueue_script( 'tcp-polylang-extensions-script' );
+        // Manual switcher JS (merged version of switcher.js)
+    wp_enqueue_script(
+        'tcp-manual-switcher',
+        plugin_dir_url( __FILE__ ) . 'assets/js/manual-switcher.js',
+        [ 'jquery' ],
+        '1.0',
+        true
+    );
+    // Prepare language data for manual switcher
+    if ( function_exists( 'pll_the_languages' ) ) {
+        $languages = pll_the_languages( [ 'raw' => 1 ] );
+
+        if ( ! $languages ) {
+            return;
+        }
+
+        // Category/taxonomy fix: add translated term slug and link
+        if ( is_category() || is_tag() || is_tax() ) {
+            $term = get_queried_object();
+            if ( $term && isset( $term->term_id ) ) {
+                foreach ( $languages as $lang => &$data ) {
+                    $translated_id = pll_get_term( $term->term_id, $lang );
+                    if ( $translated_id ) {
+                        $translated_term = get_term( $translated_id );
+                        if ( $translated_term && ! is_wp_error( $translated_term ) ) {
+                            $data['current_term_slug'] = $translated_term->slug;
+                            $data['current_term_link'] = get_term_link( $translated_term );
+                        }
+                    }
+                }
+            }
+        }
+
+        // Localize language data for JS
+        wp_localize_script(
+            'tcp-manual-switcher',
+            'PolylangLanguages',
+            $languages
+        );
     }
+ }
 
     public function register_shortcodes() {
         add_shortcode( 'tcp-lang-switcher', [ $this, 'shortcode_language_switcher' ] );
