@@ -64,5 +64,5 @@ GPLv2 or later.
 Will improve this plugin to add features as we need them
 
 ## Credits
-Shortcode based and extended from BW_Lang_Switcher_Plugin by blickwert
-Manual switcher based on our other plugin "Manual Polylang Switcher"
+- Shortcode based and extended from BW_Lang_Switcher_Plugin by blickwert
+- Manual switcher based on our other plugin "Manual Polylang Switcher"
