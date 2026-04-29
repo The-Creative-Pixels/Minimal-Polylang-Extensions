@@ -39,7 +39,7 @@ The JavaScript will automatically update the `#` links to point to the correct t
 
 ## Block Visibility
 
-This is intended to be used in headers, footers, or any template part that needs to be translated/replaced. Will
+This is intended to be used in headers, footers, or any template part that needs to be translated/replaced.
 
 1. Wrap blocks in a Group (or any container)
 2. Add CSS class `show-for-xx`. Replace xx with the language code. (ie: en for English)
